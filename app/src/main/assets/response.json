@@ -1,0 +1,27 @@
+[
+  {
+    "type": "profile",
+    "content": {
+      "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
+      "name": "John Doe",
+      "email": "john@domain.com"
+    }
+  },
+  {
+    "type": "map",
+    "content": {
+      "title": "Location",
+      "pin": "https://some.server/map_pin_image_url.png",
+      "lat": 1.2345,
+      "lng": 1.2345
+    }
+  },
+  {
+    "type": "data",
+    "content": {
+      "title": "Information",
+      "source": "wss://s12027.nyc1.piesocket.com/v3/1?api_key=ttZsKwUV091wFGOtdSYhOGa4BfrXtUtf6Evp4L35&notify_self=1",
+      "value": "Loading..."
+    }
+  }
+]
