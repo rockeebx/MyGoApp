@@ -1,15 +1,14 @@
 package com.iro.mygoapp.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.iro.mygoapp.ui.screens.home.HomeScreen
 import com.iro.mygoapp.ui.screens.splash.SplashScreen
 import com.iro.mygoapp.ui.screens.splash.WalkThroughScreen
-import com.iro.mygoapp.ui.screens.unauthenticated.SignInScreen
-import com.iro.mygoapp.ui.screens.unauthenticated.SignUpScreen
+import com.iro.mygoapp.ui.screens.unauthenticated.login.SignInScreen
+import com.iro.mygoapp.ui.screens.unauthenticated.register.SignUpScreen
 import com.usecases.gozem_app.navigation.NavigationRoutes
 
 

@@ -2,6 +2,7 @@ package com.iro.mygoapp.ui.screens.home.maps
 
 import android.Manifest
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Build
 import android.provider.Settings
 import androidx.annotation.RequiresApi
@@ -27,10 +28,15 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -39,6 +45,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
@@ -50,6 +57,7 @@ import com.google.maps.android.compose.rememberCameraPositionState
 import com.iro.mygoapp.data.model.SectionModel
 import com.iro.mygoapp.utils.extensions.hasLocationPermission
 import com.iro.mygoapp.utils.extensions.height
+import com.iro.mygoapp.utils.urlToBitmap
 
 
 @RequiresApi(Build.VERSION_CODES.S)
@@ -110,7 +118,8 @@ fun MapView(section: SectionModel) {
                     }?.let {
                         MapBox(
                             currentPosition = it,
-                            cameraState = cameraState
+                            cameraState = cameraState,
+                            section.content.pin!!
                         )
                     }
                 }
@@ -124,7 +133,7 @@ fun MapView(section: SectionModel) {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text("We need permissions to use this app")
+                    Text("We need permissions to use this app", style = TextStyle(color = Color.Black))
                     Button(
                         onClick = {
                             context.startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
@@ -133,9 +142,9 @@ fun MapView(section: SectionModel) {
                     ) {
                         if (context.hasLocationPermission()) CircularProgressIndicator(
                             modifier = Modifier.size(14.dp),
-                            color = Color.White
+                            color = MaterialTheme.colorScheme.primary
                         )
-                        else Text("Settings")
+                        else Text("Settings", style = TextStyle(color = Color.White))
                     }
                 }
             }
@@ -156,7 +165,8 @@ fun MapView(section: SectionModel) {
                         currentLoc.latitude,
                         currentLoc.longitude
                     ),
-                    cameraState = cameraState
+                    cameraState = cameraState,
+                    section.content.pin!!
                 )
             }
         }
@@ -164,8 +174,18 @@ fun MapView(section: SectionModel) {
 }
 
 @Composable
-fun MapBox(currentPosition: LatLng, cameraState: CameraPositionState) {
+fun MapBox(currentPosition: LatLng, cameraState: CameraPositionState,iconUrl:String) {
     val marker = LatLng(currentPosition.latitude, currentPosition.longitude)
+
+    val coroutineScope = rememberCoroutineScope()
+    var bitmap by remember { mutableStateOf<Bitmap?>(null) }
+    val context = LocalContext.current
+
+    //Use the pin image from the section pin
+    LaunchedEffect(iconUrl) {
+        val loadedBitmap = urlToBitmap(coroutineScope, iconUrl, context =context )
+        bitmap = loadedBitmap
+    }
 
     Card(
         modifier = Modifier
@@ -184,6 +204,7 @@ fun MapBox(currentPosition: LatLng, cameraState: CameraPositionState) {
     ) {
         Marker(
             state = MarkerState(position = marker),
+            icon = bitmap?.let { BitmapDescriptorFactory.fromBitmap(it) },
             title = "My Location",
             draggable = true
         )

@@ -18,8 +18,8 @@ class HomeViewModel @Inject constructor(
     private val repository: SectionRepository
 ) : ViewModel(){
 
-    private val _marketDataState = MutableStateFlow(UiState())
-    val uiState: StateFlow<UiState> get() = _marketDataState
+    private val _marketDataState = MutableStateFlow(HomeUiState())
+    val uiState: StateFlow<HomeUiState> get() = _marketDataState
 
     init {
         getSectionsData()

@@ -72,6 +72,10 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+
+    // compose coil
+    implementation("io.coil-kt:coil-compose:2.5.0")
 
     //Dependency Injection
     implementation("com.google.dagger:hilt-android:2.48.1")
@@ -97,5 +101,6 @@ dependencies {
 
     //Accompanist (Permission)
     implementation ("com.google.accompanist:accompanist-permissions:0.31.3-beta")
+
 
 }

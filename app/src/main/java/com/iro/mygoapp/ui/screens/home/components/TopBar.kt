@@ -20,8 +20,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.iro.mygoapp.R
 import com.iro.mygoapp.utils.extensions.boldTextStyle
 import com.iro.mygoapp.utils.extensions.width
 
@@ -34,7 +36,7 @@ fun TopBar() {
         ),
         title = {
             Text(
-                "Social",
+                stringResource(R.string.goapp),
                 style = boldTextStyle(color = Color.Black, fontSize = 32.sp)
             )
         },
@@ -50,7 +52,7 @@ fun TopBar() {
                     tint = Color.White,
                     modifier = Modifier
                         .clip(CircleShape)
-                        .background(Color(0xFFff7074))
+                        .background(MaterialTheme.colorScheme.primary)
                         .padding(8.dp)
                 )
             }

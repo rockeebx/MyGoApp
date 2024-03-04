@@ -15,7 +15,7 @@ class WebSocketListener(
 
     override fun onOpen(webSocket: WebSocket, response: Response) {
         super.onOpen(webSocket, response)
-        webSocket.send("Android Device Connected")
+        webSocket.send("Listen...")
         Log.d(TAG, "onOpen:")
     }
 

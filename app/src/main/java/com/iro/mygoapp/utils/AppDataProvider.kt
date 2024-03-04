@@ -6,19 +6,19 @@ import com.iro.mygoapp.R
 val getWalkData = listOf(
     IntroModel(
         image = R.drawable.ic_logo,
-        title = "Brand new \ncurriculum",
-        description = "This is the first online education platform designed by the world's top"
-    ),
-    IntroModel(
-        image =  R.drawable.ic_logo,
-        title = "Bring a fun \natmosphere",
-        description = "This is the first online education platform designed by the world's top"
+        title = "Real-time \nlocation tracking",
+        description = "Stay connected and share your location with friends and family."
     ),
     IntroModel(
         image = R.drawable.ic_logo,
-        title = "Easy to join \nthe lesson",
-        description = "This is the first online education platform designed by the world's top"
+        title = "Share your \nprecise location",
+        description = "Easily share your exact location with others for meetups and gatherings."
     ),
+    IntroModel(
+        image = R.drawable.ic_logo,
+        title = "Track your \nfriends and family",
+        description = "Keep an eye on your loved ones and know their whereabouts at all times."
+    )
 )
 
 data class IntroModel(
