@@ -1,7 +1,6 @@
-# LoginWithJetpackCompose
+# GoApp
 
-A simple android application containing login and registration built using jetpack compose. The app
-shows a clean way of handling login and registration state along with nested navigation.
+A simple android application built using jetpack compose.
 
 ### :scroll: Overview
 
@@ -11,6 +10,8 @@ shows a clean way of handling login and registration state along with nested nav
    viewmodel
 5. Maps
 6. Webscoket
+
+7. Turn on Gps
 
 ### :camera: Screenshots
 
