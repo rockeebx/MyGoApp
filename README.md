@@ -1,6 +1,6 @@
 # GoApp
 
-A simple android application built using jetpack compose.
+A simple android application built using jetpack compose , Hilt, MVVM.
 
 ### :scroll: Overview
 
