@@ -3,6 +3,7 @@ package com.iro.mygoapp.di
 import android.content.Context
 import co.infinum.retromock.Retromock
 import com.iro.mygoapp.service.ApiService
+import com.iro.mygoapp.utils.Api.baseUrl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,7 +30,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl("https://www.google.com")
+        .baseUrl(baseUrl)
         .client(okHttpClient)
         .build()
 

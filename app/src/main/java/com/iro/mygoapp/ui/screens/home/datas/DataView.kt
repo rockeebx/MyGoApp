@@ -32,6 +32,7 @@ import com.iro.mygoapp.utils.extensions.primaryTextStyle
 @Composable
 fun DataView(section: SectionModel){
     val viewModel = hiltViewModel<DataViewModel>()
+    viewModel.setWebSocketUrl(section.content.source!!)
     val uiState = viewModel.messages.collectAsState()
     val messagesList = remember { mutableStateListOf<String>() }
     LaunchedEffect(uiState.value) {

@@ -1,5 +1,7 @@
 package com.iro.mygoapp.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -12,6 +14,7 @@ import com.iro.mygoapp.ui.screens.unauthenticated.register.SignUpScreen
 import com.usecases.gozem_app.navigation.NavigationRoutes
 
 
+@RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun GoNavigation(navController: NavHostController){
     NavHost(navController = navController, startDestination = NavigationRoutes.SplashScreen.routes ){

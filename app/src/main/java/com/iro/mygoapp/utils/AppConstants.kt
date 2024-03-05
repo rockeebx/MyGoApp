@@ -4,6 +4,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 
+object Api {
+    var baseUrl: String = "https://www.google.com"
+}
+
 object Style {
     var fontWeightBoldGlobal: FontWeight = FontWeight.Bold
     var fontWeightPrimaryGlobal: FontWeight = FontWeight.Normal
